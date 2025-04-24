@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Book, Category } from "@/types/book";
 import { BookCard } from "./BookCard";
@@ -32,7 +33,60 @@ const MOCK_BOOKS: Book[] = [
     price: 300,
     imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/b74b3b7200c617997526800f5231207eddde4fdc?placeholderIfAbsent=true",
   },
-  // Repeat for other books...
+  {
+    id: "4",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/c0f63340b2ad1d91d53b28b3980a5bfb8d7570c5?placeholderIfAbsent=true",
+  },
+  {
+    id: "5",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/01b02f2faab82c2ac72973a624b082184c6e2307?placeholderIfAbsent=true",
+  },
+  {
+    id: "6",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/b74b3b7200c617997526800f5231207eddde4fdc?placeholderIfAbsent=true",
+  },
+  {
+    id: "7",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/c0f63340b2ad1d91d53b28b3980a5bfb8d7570c5?placeholderIfAbsent=true",
+  },
+  {
+    id: "8",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/01b02f2faab82c2ac72973a624b082184c6e2307?placeholderIfAbsent=true",
+  },
+  {
+    id: "9",
+    type: "BOOK",
+    title: "The grey pattern to lawing cases",
+    author: "Wisdom Umanah",
+    fileType: "PDF",
+    price: 300,
+    imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/b74b3b7200c617997526800f5231207eddde4fdc?placeholderIfAbsent=true",
+  }
 ];
 
 export const BookList: React.FC = () => {

@@ -106,21 +106,21 @@ export const BookList: React.FC = () => {
   };
 
   return (
-    <main className="max-w-[1442px] w-full box-border mx-auto my-0 p-5 max-md:max-w-[991px] max-sm:max-w-screen-sm">
-      <div className="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start">
+    <main className="max-w-[1442px] w-full box-border mx-auto my-0 px-[100px] py-10 max-md:px-5 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+      <div className="flex justify-between items-center mb-8 max-sm:flex-col max-sm:items-start gap-4">
         <CategoryFilter
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
         />
         <button
           onClick={handleAddBook}
-          className="text-white rounded text-sm font-medium leading-[18.2px] cursor-pointer bg-[#6B047C] px-2.5 py-2 max-sm:self-end"
+          className="text-white rounded text-sm font-medium leading-[18.2px] cursor-pointer bg-[#6B047C] px-4 py-2.5 hover:bg-[#6B047C]/90 max-sm:self-end"
         >
           Add a new book
         </button>
       </div>
 
-      <section className="grid grid-cols-[repeat(3,1fr)] gap-4 max-md:grid-cols-[repeat(2,1fr)] max-sm:grid-cols-[1fr]">
+      <section className="grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1">
         {MOCK_BOOKS.map((book) => (
           <BookCard
             key={book.id}

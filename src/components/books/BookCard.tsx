@@ -35,13 +35,13 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onEdit, onBuy }) => {
         <div className="flex gap-2 mt-3">
           <button
             onClick={() => onEdit(book.id)}
-            className="flex-1 border text-[#6B047C] rounded text-sm font-medium leading-[18.2px] text-center cursor-pointer px-2 py-1 border-solid border-[#6B047C] hover:bg-[#6B047C] hover:text-white transition-colors hover:scale-105"
+            className="flex-1 border text-[#6B047C] rounded text-sm font-medium leading-[18.2px] text-center cursor-pointer px-4 py-2 border-solid border-[#6B047C] hover:bg-[#6B047C] hover:text-white transition-colors hover:scale-105"
           >
             Edit
           </button>
           <button
             onClick={() => onBuy(book.id)}
-            className="flex-1 text-white rounded text-sm font-medium leading-[18.2px] text-center cursor-pointer bg-[#6B047C] px-2 py-1 hover:bg-[#5A036A] transition-colors hover:scale-105"
+            className="flex-1 text-white rounded text-sm font-medium leading-[18.2px] text-center cursor-pointer bg-[#6B047C] px-4 py-2 hover:bg-[#5A036A] transition-colors hover:scale-105"
           >
             Buy for ${book.price}
           </button>

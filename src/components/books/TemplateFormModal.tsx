@@ -1,52 +1,55 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Book } from "@/types/book";
+import { Template } from "@/types/template";
 
-interface BookFormModalProps {
+const FILE_TYPES = ["DOC", "PDF", "PPT", "XLS"] as const;
+
+interface TemplateFormModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (book: Partial<Book>) => void;
-  book?: Book;
+  onSubmit: (template: Partial<Template>) => void;
+  template?: Template;
   mode: "edit" | "add";
 }
 
-export const BookFormModal: React.FC<BookFormModalProps> = ({
+export const TemplateFormModal: React.FC<TemplateFormModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
-  book,
+  template,
   mode,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [formData, setFormData] = useState<Partial<Book>>(
-    book || {
-      type: "BOOK",
+  const [formData, setFormData] = useState<Partial<Template>>(
+    template || {
+      type: "TEMPLATE",
       title: "",
       author: "",
-      fileType: "PDF",
+      fileType: "DOC",
       price: 300,
-      imageUrl: "",
+      imageUrl: "./template-category.png",
       description: "",
+      discountInfo: null
     }
   );
-  const [previewImage, setPreviewImage] = useState<string>(book?.imageUrl || "");
+  const [previewImage, setPreviewImage] = useState<string>(template?.imageUrl || "./template-category.png");
 
-  // Reset form when modal opens/closes or book changes
   useEffect(() => {
     if (isOpen) {
       setFormData(
-        book || {
-          type: "BOOK",
+        template || {
+          type: "TEMPLATE",
           title: "",
           author: "",
-          fileType: "PDF",
+          fileType: "DOC",
           price: 300,
-          imageUrl: "",
+          imageUrl: "./template-category.png",
           description: "",
+          discountInfo: null
         }
       );
-      setPreviewImage(book?.imageUrl || "");
+      setPreviewImage(template?.imageUrl || "./template-category.png");
     }
-  }, [isOpen, book]);
+  }, [isOpen, template]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +77,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
       <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-medium">
-            {mode === "edit" ? "Edit Book" : "Add New Book"}
+            {mode === "edit" ? "Edit Template" : "Add New Template"}
           </h2>
           <button
             onClick={onClose}
@@ -107,6 +110,7 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
               }
               className="border border-[#E6E6E6] rounded px-3 py-2 text-sm focus:border-[#6B047C] focus:outline-none"
               required
+              placeholder="Enter template title"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -119,7 +123,41 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
               }
               className="border border-[#E6E6E6] rounded px-3 py-2 text-sm focus:border-[#6B047C] focus:outline-none"
               required
+              placeholder="Enter author name"
             />
+          </div>
+          <div className="flex gap-4">
+            <div className="flex flex-col gap-1 flex-1">
+              <label className="text-sm text-[#808080]">File Type</label>
+              <select
+                value={formData.fileType}
+                onChange={(e) =>
+                  setFormData({ ...formData, fileType: e.target.value as Template['fileType'] })
+                }
+                className="border border-[#E6E6E6] rounded px-3 py-2 text-sm focus:border-[#6B047C] focus:outline-none bg-white"
+                required
+              >
+                {FILE_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1 flex-1">
+              <label className="text-sm text-[#808080]">Price ($)</label>
+              <input
+                type="number"
+                value={formData.price}
+                onChange={(e) =>
+                  setFormData({ ...formData, price: Number(e.target.value) })
+                }
+                className="border border-[#E6E6E6] rounded px-3 py-2 text-sm focus:border-[#6B047C] focus:outline-none"
+                required
+                min="0"
+                step="1"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-sm text-[#808080]">Description</label>
@@ -130,22 +168,23 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
               }
               className="border border-[#E6E6E6] rounded px-3 py-2 text-sm min-h-[100px] resize-none focus:border-[#6B047C] focus:outline-none"
               required
+              placeholder="Enter template description"
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-[#808080]">Price ($)</label>
+            <label className="text-sm text-[#808080]">Discount Info (Optional)</label>
             <input
-              type="number"
-              value={formData.price}
+              type="text"
+              value={formData.discountInfo || ""}
               onChange={(e) =>
-                setFormData({ ...formData, price: Number(e.target.value) })
+                setFormData({ ...formData, discountInfo: e.target.value || null })
               }
               className="border border-[#E6E6E6] rounded px-3 py-2 text-sm focus:border-[#6B047C] focus:outline-none"
-              required
+              placeholder="e.g. 20% Discount: $300 $240 | 36-32hrs"
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-sm text-[#808080]">Book Cover Image</label>
+            <label className="text-sm text-[#808080]">Template Preview Image</label>
             <div className="flex flex-col items-center gap-2 p-4 border-2 border-dashed border-[#E6E6E6] rounded-lg hover:border-[#6B047C] transition-colors">
               {previewImage ? (
                 <div className="relative w-full aspect-[4/3]">
@@ -157,8 +196,8 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
                   <button
                     type="button"
                     onClick={() => {
-                      setPreviewImage("");
-                      setFormData({ ...formData, imageUrl: "" });
+                      setPreviewImage("./template-category.png");
+                      setFormData({ ...formData, imageUrl: "./template-category.png" });
                     }}
                     className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md hover:bg-gray-100"
                   >
@@ -205,7 +244,6 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
                 accept="image/*"
                 onChange={handleImageChange}
                 className="hidden"
-                required={!formData.imageUrl}
               />
             </div>
           </div>
@@ -213,15 +251,15 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="text-[#6B047C] border border-[#6B047C] rounded text-sm font-medium leading-[18.2px] cursor-pointer px-4 py-2 hover:scale-105 transition-all duration-200"
+              className="flex-1 text-[#6B047C] border border-[#6B047C] rounded text-sm font-medium leading-[18.2px] cursor-pointer px-4 py-2 hover:bg-[#6B047C] hover:text-white transition-colors hover:scale-105"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="text-white rounded text-sm font-medium leading-[18.2px] cursor-pointer bg-[#6B047C] px-4 py-2 hover:scale-105 transition-all duration-200"
+              className="flex-1 text-white rounded text-sm font-medium leading-[18.2px] cursor-pointer bg-[#6B047C] px-4 py-2 hover:bg-[#5A036A] transition-colors hover:scale-105"
             >
-              {mode === "edit" ? "Save Changes" : "Add Book"}
+              {mode === "edit" ? "Save Changes" : "Add Template"}
             </button>
           </div>
         </form>

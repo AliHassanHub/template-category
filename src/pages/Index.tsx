@@ -1,5 +1,5 @@
 import React from "react";
-import { BookList } from "@/components/books/BookList";
+import TemplateList from "@/components/books/TemplateList";
 
 const Index: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Index: React.FC = () => {
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
         rel="stylesheet"
       />
-      <BookList />
+      <TemplateList />
     </>
   );
 };

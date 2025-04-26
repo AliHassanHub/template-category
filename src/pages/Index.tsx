@@ -1,5 +1,5 @@
 import React from "react";
-import TemplateList from "@/components/books/TemplateList";
+import TemplateList from "@/components/templates/TemplateList";
 
 const Index: React.FC = () => {
   return (

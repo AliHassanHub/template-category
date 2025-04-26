@@ -26,7 +26,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({ template, onEdit, on
         <div className="text-[#808080] text-[11px] font-medium leading-[13px] uppercase">
           {template.type}
         </div>
-        <h3 className="text-[#1A011E] text-base font-medium leading-5 mb-1">
+        <h3 className="text-[#1A011E] text-base font-medium leading-5 mb-1 truncate">
           {template.title}
         </h3>
         <div className="flex flex-col gap-1">
@@ -35,7 +35,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({ template, onEdit, on
             <span>File type:</span>
           </div>
           <div className="flex justify-between text-[#1A011E] text-xs font-medium">
-            <span>{template.author}</span>
+            <span className="truncate max-w-[120px]">{template.author}</span>
             <span>{template.fileType}</span>
           </div>
         </div>

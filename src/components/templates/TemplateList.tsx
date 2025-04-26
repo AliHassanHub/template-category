@@ -12,7 +12,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: "20% Discount: $300 $240 | 36-32hrs"
   },
@@ -23,7 +23,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: null
   },
@@ -34,7 +34,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: "20% Discount: $300 $240 | 36-32hrs"
   },
@@ -45,7 +45,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: null
   },
@@ -56,7 +56,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: "20% Discount: $300 $240 | 36-32hrs"
   },
@@ -67,7 +67,7 @@ const MOCK_TEMPLATES: Template[] = [
     author: "Wisdom Umanah",
     fileType: "DOC",
     price: 300,
-    imageUrl: "../../../public/template-category.png",
+    imageUrl: "/template-category.png",
     description: "A comprehensive business plan template for legal practices.",
     discountInfo: null
   }
